@@ -1,0 +1,46 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},
+		{
+			"path": "pages/sample/ext-module",
+			"style": {
+				"navigationBarTitleText": "扩展 module"
+			}
+		},
+		{
+			"path": "pages/sample/ext-component",
+			"style": {
+				"navigationBarTitleText": "扩展 component"
+			}
+		},
+		{
+			"path": "pages/sample/richAlert",
+			"style": {
+				"navigationBarTitleText": "RichAlert"
+			}
+		},
+		{
+			"path": "pages/sample/ext-gaodeLocationmodule",
+			"style": {
+				"navigationBarTitleText": "扩展 高德定位module"
+			}
+		},
+		{
+			"path": "pages/sample/ext-AmapComponent",
+			"style": {
+				"navigationBarTitleText": "扩展 高德地图module"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}

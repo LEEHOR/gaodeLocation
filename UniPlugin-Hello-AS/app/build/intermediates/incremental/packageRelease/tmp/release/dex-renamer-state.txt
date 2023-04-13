@@ -1,0 +1,7 @@
+#Wed Apr 12 16:14:59 CST 2023
+base.1=D\:\\uniappProject\\Android-SDK@3.6.2.81499_20230412\\Android-SDK@3.6.2.81499_20230412\\UniPlugin-Hello-AS\\app\\build\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes2.dex
+path.1=classes2.dex
+base.0=D\:\\uniappProject\\Android-SDK@3.6.2.81499_20230412\\Android-SDK@3.6.2.81499_20230412\\UniPlugin-Hello-AS\\app\\build\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+path.0=classes.dex

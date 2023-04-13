@@ -1,0 +1,2 @@
+com/weilun/quanqi/BuildConfig.java
+ com.weilun.quanqi.BuildConfig

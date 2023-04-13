@@ -1,0 +1,22 @@
+{
+  "nativePlugins": [
+    {
+      "plugins": [
+        {
+          "type": "module",
+          "name": "Qq-GaodeLocation",
+          "class": "com.weilun.uniplugin_beLocation.GaoDeLocationModule"
+        }
+      ]
+    },
+    {
+      "plugins": [
+        {
+          "type": "component",
+          "name": "Qq-GaodeAmap",
+          "class": "com.weilun.uniplugin_beLocation.AmapViewModule"
+        }
+      ]
+    }
+  ]
+}

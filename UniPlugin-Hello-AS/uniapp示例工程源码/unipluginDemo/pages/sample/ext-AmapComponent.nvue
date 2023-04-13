@@ -1,0 +1,64 @@
+<template>
+	<div>
+		<leehor-gaode-amap ref="gaodeAmaps" style="width:300;height:500"></leehor-gaode-amap>
+		<text class="初始化" @click="initMap">map初始化</text>
+		<text class="map传值" @click="myTextClick">map传值</text>
+	</div>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				lngLat: {
+					"msg": "操作成功",
+					"code": 200,
+					"driverLngLats": [{
+						"id": 2,
+						"name": "司机1",
+						"phone": "18571512117",
+						"psBillId": 1,
+						"psBillNumber": "HXD-2023-04-07-00032",
+						"lngLats": [
+							117.148062,
+							31.828123
+						]
+					}],
+					"customerLngLat": {
+						"name": "子航轮胎店",
+						"address": "安徽省合肥市蜀山区南七街道京东电器超级体验店港汇中心",
+						"lngLats": [
+							117.232849,
+							31.833607
+						]
+					}
+				}
+			}
+		},
+		created() {
+
+		},
+		beforeMount() {
+			// this.$refs.gaodeAmaps.initMap();
+		},
+		onShow() {
+			// this.$refs.gaodeAmaps.onResume();
+		},
+		onHide() {
+			// this.$refs.gaodeAmaps.onPause();
+		},
+		beforeDestroy() {
+			// this.$refs.gaodeAmaps.onDestroy();
+		},
+		methods: {
+			initMap() {
+				//默认已经初始化了，可以调用此方法再次手动初始化
+				this.$refs.gaodeAmaps.initMap();
+			},
+			myTextClick(e) {
+				//传参到地图 格式和字段必须相同
+				this.$refs.gaodeAmaps.drawMarker(JSON.stringify(this.lngLat));
+			}
+		}
+	}
+</script>
