@@ -58,16 +58,19 @@ public class AmapViewModule extends UniComponent<MapView> {
             }
         }
         map.setMyLocationEnabled(true);
-        map.getUiSettings().setZoomControlsEnabled(false);
+        map.getUiSettings().setZoomControlsEnabled(true);
+        map.getUiSettings().setScrollGesturesEnabled(false);
+//        map.getUiSettings().setTiltGesturesEnabled(false);
         //map.getUiSettings().setMyLocationButtonEnabled(false);//设置默认定位按钮是否显示，非必需设置。
         map.clear();
         return mapView;
     }
 
-    @UniJSMethod
+    @UniJSMethod(uiThread = false)
     public void initMap() {
         map.setMyLocationEnabled(true);
-        map.getUiSettings().setZoomControlsEnabled(false);
+        map.getUiSettings().setZoomControlsEnabled(true);
+        map.getUiSettings().setScrollGesturesEnabled(false);
         map.clear();
         for (Marker item : markerList
         ) {
@@ -75,6 +78,7 @@ public class AmapViewModule extends UniComponent<MapView> {
                 item.destroy();
             }
         }
+        markerList.clear();
     }
 
     //    {
@@ -103,11 +107,19 @@ public class AmapViewModule extends UniComponent<MapView> {
 //    ]
 //        }
 //   }
-    @UniJSMethod
+    @UniJSMethod(uiThread = false)
     public void drawMarker(String jsonLngLat) {
         if (mapView == null && map == null) {
             return;
         }
+        map.clear();
+        for (Marker item : markerList
+        ) {
+            if (item != null) {
+                item.destroy();
+            }
+        }
+        markerList.clear();
         if (jsonLngLat != null && !jsonLngLat.equals("")) {
             JSONObject jsonObject = JSONObject.parseObject(jsonLngLat);
             //绘制客户位置
@@ -122,7 +134,7 @@ public class AmapViewModule extends UniComponent<MapView> {
                     markerList.add(marker);
                     map.setMyLocationEnabled(false);
                     marker.showInfoWindow();
-                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12));
+                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
                 }
             }
             //绘制司机
@@ -146,26 +158,17 @@ public class AmapViewModule extends UniComponent<MapView> {
             }
         }
     }
-    @UniJSMethod
+    @UniJSMethod(uiThread = false)
     public void onResume() {
-        if (mapView != null) {
-            //在activity执行onPause时执行mMapView.onResume ()，重新绘制加载地图
-            mapView.onResume();
-        }
+       onActivityResume();
     }
-    @UniJSMethod
+    @UniJSMethod(uiThread = false)
     public void onPause() {
-        if (mapView != null) {
-            //在activity执行onPause时执行mMapView.onResume ()，重新绘制加载地图
-            mapView.onPause();
-        }
+        onActivityPause();
     }
-    @UniJSMethod
+    @UniJSMethod(uiThread = false)
     public void onDestroy() {
-        if (mapView != null) {
-            //在activity执行onPause时执行mMapView.onResume ()，重新绘制加载地图
-            mapView.onDestroy();
-        }
+        onActivityDestroy();
     }
     @Override
     public void onActivityResume() {
@@ -173,7 +176,7 @@ public class AmapViewModule extends UniComponent<MapView> {
             //在activity执行onPause时执行mMapView.onResume ()，重新绘制加载地图
             mapView.onResume();
         }
-
+        super.onActivityResume();
     }
 
     @Override
@@ -182,6 +185,7 @@ public class AmapViewModule extends UniComponent<MapView> {
             //在activity执行onPause时执行mMapView.onPause ()，暂停地图的绘制
             mapView.onPause();
         }
+        super.onActivityPause();
     }
 
     @Override
@@ -189,6 +193,9 @@ public class AmapViewModule extends UniComponent<MapView> {
         if (mapView != null) {
             //在activity执行onDestroy时执行mMapView.onDestroy()，销毁地图
             mapView.onDestroy();
+            mapView=null;
+            map=null;
         }
+        super.onActivityDestroy();
     }
 }

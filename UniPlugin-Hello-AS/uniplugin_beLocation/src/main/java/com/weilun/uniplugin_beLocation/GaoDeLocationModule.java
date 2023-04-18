@@ -48,7 +48,8 @@ public class GaoDeLocationModule extends UniModule {
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.READ_PHONE_STATE
+            Manifest.permission.READ_PHONE_STATE,
+            BACKGROUND_LOCATION_PERMISSION
     };
     private JSONObject initOptions = null;
     private JSCallback initJsCallback = null;
